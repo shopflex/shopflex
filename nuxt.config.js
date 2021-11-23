@@ -34,6 +34,8 @@ export default {
   plugins: [
     { src: '@/plugins/element-ui', ssr: true },
     { src: '@/plugins/axios', ssr: true },
+    // api should import after plugins/axios
+    { src: '@/plugins/api', ssr: true },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

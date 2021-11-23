@@ -9,7 +9,7 @@
 export default {
   name: 'Home',
   layout: 'public',
-  async asyncData({ $axios }) {
+  async asyncData({ $axios, store }) {
     const data = await 'user'
     return {
       user: data,

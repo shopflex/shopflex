@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import MHeader from '@/components/content/m-header.vue'
+import MHeader from '@/components/content/header/index.vue'
 import MFooter from '@/components/content/m-footer.vue'
 import MMain from '@/components/content/m-main.vue'
 import MAside from '@/components/content/m-aside.vue'

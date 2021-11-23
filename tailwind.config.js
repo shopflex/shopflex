@@ -15,11 +15,10 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: '#ff813f',
-      lightgray: '#eeeeee',
 
       black: colors.black,
       white: colors.white,
-      gray: colors.coolGra,
+      gray: colors.coolGray,
       red: colors.red,
       yellow: colors.amber,
       green: colors.emerald,
@@ -27,8 +26,10 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      lightgray: '#eeeeee',
     },
     spacing: {
+      pd: '2rem', // container 左右两边的间距
       px: '1px',
       0: '0px',
       0.5: '0.125rem',
@@ -49,6 +50,7 @@ module.exports = {
       12: '3rem',
       14: '3.5rem',
       16: '4rem',
+      18: '4.5rem',
       20: '5rem',
       24: '6rem',
       28: '7rem',
@@ -153,7 +155,6 @@ module.exports = {
       '2xl': '1rem',
       '3xl': '1.5rem',
       full: '9999px',
-      pod: '2rem',
     },
     borderWidth: {
       DEFAULT: '1px',
@@ -306,6 +307,7 @@ module.exports = {
       light: '300',
       normal: '400',
       medium: '500',
+      mediumplus: '550',
       semibold: '600',
       bold: '700',
       extrabold: '800',
