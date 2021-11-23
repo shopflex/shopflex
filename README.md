@@ -17,22 +17,48 @@ $ yarn start
 $ yarn generate
 ```
 
+## 技术选型
+
+### 框架
+
+- Vue2
+- Nuxt: ssr。
+
+### 样式
+
+- Tailwindcss: 标准化的页面格式。支持 tree-shaking。
+- ElementUI: 组件库。支持 tree-shaking。
+
+### networking
+
+- axios
+
 ## 规范
 
-### 前缀
+### 命名
 
-对于组件而言，如果需要前缀的话，默认以 `m-` 开头。
+#### 文件命名
 
-### 命名规范
+|                     |                命名规范                |          示例           |
+| :-----------------: | :------------------------------------: | :---------------------: |
+|        file         |               kebap-case               |     `m-header.vue`      |
+|   const-variables   | snake_case with capitalizing all words |    `DEFAULT_OPTIONS`    |
+| non-const-variables |               camelCase                |       `isLoading`       |
+|        class        |               PascalCase               |         `User`          |
+|  custom-component   |              kebpap-case               | `<m-header></m-header>` |
 
-文件采用 **-** 作为分为分隔符命名。
+#### 前缀
 
-### 目录说明
+|   prefix   |                                          说明                                           |    示例     |
+| :--------: | :-------------------------------------------------------------------------------------: | :---------: |
+|    `m-`    | 组件前缀（Vue 会识别 HTML 默认标签，对于某些组件，如果需要添加前缀的话，默认采用 `m-`） | `m-header`  |
+| `fetchXXX` |                                      网络请求前缀                                       | `fetchUser` |
 
-#### `components`
+## TODO
 
-- `components/common`: 存放与业务无关的组件。可以直接用于下一个 app 的构建。
-- `components/content`: 存放于业务有关但公用组件。
+- [ ] : 分页面 SSR - custom head.
+- [ ] : 404 页面
+- [ ] : loading 组件
 
 ## **`打包发布流程`**
 
