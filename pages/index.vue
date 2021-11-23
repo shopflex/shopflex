@@ -1,12 +1,5 @@
 <template>
-  <div class="home">
-    <div class="col">1</div>
-    <div class="col">
-      <span class="text">
-        adgfasdf
-      </span>
-    </div>
-  </div>
+  <div class="home">home</div>
 </template>
 
 <script>
