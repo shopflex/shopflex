@@ -1,19 +1,21 @@
 <template>
-  <div class="home">home</div>
+  <section class="home">
+    home
+    {{ user }}
+  </section>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Home',
+  layout: 'public',
+  async asyncData({ $axios }) {
+    const data = await 'user'
+    return {
+      user: data,
+    }
+  },
+}
 </script>
 
-<style lang="scss" scoped>
-.home {
-  color: red;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.text {
-  font-size: 2rem;
-}
-</style>
+<style lang="scss" scoped></style>

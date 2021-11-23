@@ -1,3 +1,5 @@
+const BASE_URL = 'http://buk.mixshop.world'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -29,7 +31,10 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '@/plugins/element-ui', ssr: true }],
+  plugins: [
+    { src: '@/plugins/element-ui', ssr: true },
+    { src: '@/plugins/axios', ssr: true },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -43,17 +48,23 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/style-resources', '@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/style-resources',
+    '@nuxtjs/axios',
+    'cookie-universal-nuxt',
+  ],
   styleResources: {
     scss: ['./assets/style/global.scss'],
   },
+  axios: {
+    baseURL: BASE_URL,
+  },
   proxy: {
-    '/api': { target: 'http://buk.mixshop.world', changeOrigin: true },
+    '/api': { target: BASE_URL, changeOrigin: true },
     pathRewrite: {
       '^/api': '/',
     },
   },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],

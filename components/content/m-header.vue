@@ -1,5 +1,9 @@
 <template>
-  <header class="m-header">header</header>
+  <header
+    class="m-header border-b-2 border-solid border-1 border-lightgray z-fixed"
+  >
+    header
+  </header>
 </template>
 
 <script>

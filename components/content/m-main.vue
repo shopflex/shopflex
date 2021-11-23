@@ -1,5 +1,7 @@
 <template>
-  <main class="m-main">main</main>
+  <main class="m-main h-full overflow-x-hidden overflow-y-scroll">
+    <Nuxt />
+  </main>
 </template>
 
 <script>

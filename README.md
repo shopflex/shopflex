@@ -67,3 +67,11 @@ $ yarn generate
 -3.进入 fashion 文件夹，git pull 拉取代码；
 -4.运行 yarn build 打包；
 -5.gcloud app deploy app.yaml --project fashion-express-321810。
+
+## Reference
+
+- [NuxtJS](https://nuxtjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Element](https://element.eleme.cn/2.0/#/)
+- [Nuxt.js 免费视频教程 开启 SSR 渲染](https://www.bilibili.com/video/BV1Xt41117Kg)
+- [千锋教育\_前端 Nuxt 框架教程 开启 SSR（服务器端渲染）](https://www.bilibili.com/video/BV13Z4y1T74J)

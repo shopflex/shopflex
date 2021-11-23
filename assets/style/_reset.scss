@@ -1,6 +1,7 @@
 html,
 body,
 div,
+main,
 span,
 applet,
 object,
@@ -86,6 +87,11 @@ video {
   font-size: 100%;
   vertical-align: baseline;
   box-sizing: border-box;
+
+  &::selection {
+    background: var(--color-primary);
+    color: #ffffff;
+  }
 }
 
 article,
@@ -104,10 +110,7 @@ section {
 body {
   line-height: 1;
 }
-html,
-body {
-  background: #f2f3f4;
-}
+
 ol,
 ul {
   list-style: none;
@@ -146,4 +149,28 @@ body,
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+
+html,
+body,
+section,
+aside,
+main,
+aside,
+div,
+.app {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-second);
+    border-radius: 9999px;
+  }
+}
+
+.custom-scroll {
+  scrollbar-width: thin;
+  background-color: var(--color-primary);
+  color: var(--color-primary);
 }

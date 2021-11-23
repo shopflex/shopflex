@@ -15,6 +15,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: '#ff813f',
+      lightgray: '#eeeeee',
 
       black: colors.black,
       white: colors.white,
@@ -152,10 +153,12 @@ module.exports = {
       '2xl': '1rem',
       '3xl': '1.5rem',
       full: '9999px',
+      pod: '2rem',
     },
     borderWidth: {
       DEFAULT: '1px',
       0: '0px',
+      1: '1px',
       2: '2px',
       4: '4px',
       8: '8px',
@@ -817,6 +820,15 @@ module.exports = {
       30: '30',
       40: '40',
       50: '50',
+      dropdown: 1000,
+      sticky: 1020,
+      fixed: 1030,
+      'offcanvas-backdrop': 1040,
+      offcanvas: 1045,
+      'modal-backdrop': 1050,
+      modal: 1055,
+      popover: 1070,
+      tooltip: 1080,
     },
   },
   variantOrder: [
