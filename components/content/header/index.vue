@@ -51,7 +51,7 @@
         <el-button
           class="log-in-btn"
           size="medium"
-          @click="handleLogInBtnClick"
+          @click="handleLogOutBtnClick"
         >
           Log Out
         </el-button>
@@ -109,7 +109,12 @@ export default {
         return
       }
       // TODO(rushui 2021-11-23): other logic
-      this.$router.push('/login')
+      this.$router.push({
+        path: '/auth',
+        query: {
+          from: this.$route.path,
+        },
+      })
     },
     handleLogOutBtnClick() {},
   },

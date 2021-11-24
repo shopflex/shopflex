@@ -14,5 +14,6 @@ module.exports = {
   rules: {
     'no-unused-vars': 'warn',
     'vue/no-unused-components': 'warn',
+    'dot-notation': 'off',
   },
 }

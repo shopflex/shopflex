@@ -1,4 +1,4 @@
-const BASE_URL = 'http://buk.mixshop.world'
+import { API_BASE_URL } from './config'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -22,6 +22,8 @@ export default {
       },
     ],
   },
+
+  loading: '~/components/content/loading.vue',
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -53,18 +55,24 @@ export default {
   modules: [
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     'cookie-universal-nuxt',
   ],
   styleResources: {
     scss: ['./assets/style/global.scss'],
   },
   axios: {
-    baseURL: BASE_URL,
+    proxy: true,
+    // prefix: '/api', // baseURL
+    credentials: true,
   },
   proxy: {
-    '/api': { target: BASE_URL, changeOrigin: true },
-    pathRewrite: {
-      '^/api': '/',
+    '/api': {
+      target: API_BASE_URL,
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '', // 将 /api 替换掉,如果请求地址中有 /api 则不必替换
+      },
     },
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build

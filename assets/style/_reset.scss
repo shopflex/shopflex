@@ -93,6 +93,10 @@ video {
     color: #ffffff;
   }
 }
+input::selection {
+  background: var(--color-primary);
+  color: #ffffff;
+}
 
 article,
 aside,
@@ -177,9 +181,35 @@ div,
 
 // reset element ui
 button.el-button {
+  &.primary-button {
+    background: var(--color-primary) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+  }
+
+  &:active,
+  &:focus {
+    border-color: var(--color-primary);
+  }
+
   &:hover,
   &:focus {
     background: var(--color-primary);
     color: #ffffff;
+  }
+
+  // fix error when element-ui's button blurs
+  &:focus:not(button.el-button:hover) {
+    background: white;
+    color: #909399;
+    border-color: #dcdfe6;
+  }
+}
+
+input.el-input__inner {
+  &:focus,
+  &:active {
+    outline-color: var(--color-primary);
+    border-color: var(--color-primary);
   }
 }

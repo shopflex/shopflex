@@ -15,6 +15,7 @@ export default {
       user: data,
     }
   },
+  mounted() {},
 }
 </script>
 

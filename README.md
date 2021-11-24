@@ -22,7 +22,7 @@ $ yarn generate
 ### 框架
 
 - Vue2
-- Nuxt: ssr。
+- Nuxt: ssr
 
 ### 样式
 
@@ -62,6 +62,11 @@ $ yarn generate
 - [ ] : 分页面 SSR - custom head.
 - [ ] : 404 页面
 - [ ] : loading 组件
+- [ ] : 页面过渡动画
+- [ ] : 登录表单提供回滚功能
+- [ ] : auth 页面对 form 进行抽离
+- [ ] : auth 页面表单填写时，清楚错误信息
+- [ ] : auth 页面添加回车提交表单功能。
 
 ## **`打包发布流程`**
 

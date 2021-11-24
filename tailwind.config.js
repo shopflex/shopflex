@@ -15,6 +15,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: '#ff813f',
+      canvas: '#fffe6',
 
       black: colors.black,
       white: colors.white,
