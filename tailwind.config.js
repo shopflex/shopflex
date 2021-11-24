@@ -28,9 +28,10 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       lightgray: '#eeeeee',
+      'gray-text': '#6d7175',
     },
     spacing: {
-      pd: '2rem', // container 左右两边的间距
+      pd: '2.5rem', // container 左右两边的间距
       px: '1px',
       0: '0px',
       0.5: '0.125rem',

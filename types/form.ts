@@ -8,3 +8,8 @@ export interface AuthForm {
   platformStatus?: 0
   shopName?: string
 }
+
+export interface AuthResult {
+  token: string
+  tokenHead: string
+}

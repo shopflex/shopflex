@@ -28,9 +28,12 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    '@assets/iconfont/iconfont.css',
-    '@assets/style/main.scss',
+    '@/assets/iconfont/iconfont.css',
+    '@/assets/style/main.scss',
   ],
+  tailwindcss: {
+    viewer: false,
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

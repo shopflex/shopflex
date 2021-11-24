@@ -70,14 +70,19 @@ import {
   NEW_STATUS_LOG_IN,
   NEW_STATUS_SING_IN,
 } from '~/config'
-import { FETCH_USER } from '~/request/user'
+import { FETCH_AUTH, FETCH_USER_BY_TOKEN } from '~/request/user'
 import {
   STAT_LOADING,
   STAT_IDLE,
   STAT_ERROR,
   STAT_SUCCESS,
 } from '~/shared/status'
-import { isEmail } from '~/shared/utils'
+import { isDef, isEmail, isVoid, pick } from '~/shared/utils'
+import {
+  USER_MODULE_NAME,
+  USER_M_SET_TOKEN,
+  USER_M_SET_USER,
+} from '~/store/user'
 
 export default {
   name: 'Login',
@@ -86,7 +91,13 @@ export default {
   },
   layout: 'blank',
   // TODO(rushui 2021-11-24): redirect when user have login
-  middleware({ query, redirect }) {},
+  middleware({ store, query, redirect }) {
+    const user = store.state[USER_MODULE_NAME].user
+    const from = query.from || '/'
+    if (isDef(user) && !isVoid(user.id)) {
+      redirect(from)
+    }
+  },
   asyncData({ query }) {
     const { name: shopName = '', channel, bindOld = false, platform } = query
     return {
@@ -187,22 +198,50 @@ export default {
       const axios = this.$axios
       this.stat = STAT_LOADING
       const formData = this.getFormData()
+      let token
       try {
-        await axios[FETCH_USER](formData)
+        const tokenData = await axios[FETCH_AUTH](formData)
+        token = tokenData.token
+
         this.stat = STAT_SUCCESS
         this.$message({
-          message: this.isLogin ? 'Login success!' : 'Sign in successful!',
+          message: this.isLogin
+            ? 'Login successfully!'
+            : 'Sign in successfully!',
           duration: DEFAULT_DURATION,
           type: 'success',
         })
         this.$router.replace(this.from)
       } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error('auth: ', e)
         this.$message({
+          // TODO(rushui 2021-11-24): to fix message ?
           message: e.message,
           duration: DEFAULT_DURATION,
           type: 'error',
         })
         this.stat = STAT_ERROR
+      }
+
+      if (!isVoid(token)) {
+        this.$cookies.set('token', token)
+        const user = await axios[FETCH_USER_BY_TOKEN](token)
+        this.$cookies.set(
+          'user',
+          pick(user, [
+            'id',
+            'username',
+            'channel',
+            'platform',
+            'email',
+            'regionCode',
+            'myCode',
+          ])
+        )
+
+        this.$store.commit(USER_M_SET_TOKEN, token)
+        this.$store.commit(USER_M_SET_USER, user)
       }
     },
     getFormData() {

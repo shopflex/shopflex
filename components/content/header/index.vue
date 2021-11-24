@@ -10,14 +10,14 @@
       z-fixed
     "
   >
-    <div class="left flex-shrink-0 w-2/12">
-      <logo :src="logoSrc" class="w-full" />
+    <div class="left flex-shrink-0">
+      <logo :src="logoSrc" class="w-52" />
     </div>
 
-    <section class="mid flex-1 ml-24 mr-12">
-      <h3 class="title text-xl font-mediumplus">Women Fashion Dropshipping.</h3>
+    <section class="mid flex-1 whitespace-nowrap overflow-hidden ml-24 mr-12">
+      <h3 class="title text-xl font-semibold">Women Fashion Dropshipping.</h3>
       <!-- TODO(rushui 2021-11-23): disable enter new line when spacing lack -->
-      <p class="description overflow-hidden text-gray-150">
+      <p class="description overflow-hidden text-gray-text">
         Fast & Free Shipping for order above $200. Flat Shipping rate of $9.99
         for all order under $200.
       </p>
@@ -80,26 +80,34 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import logo from '~/components/common/logo.vue'
 import logoSrc from '~/assets/icon/fashion-express-logo.png'
+import {
+  USER_MODULE_NAME,
+  USER_M_SET_TOKEN,
+  USER_M_SET_USER,
+} from '~/store/user'
+import { isDef, isVoid } from '~/shared/utils'
+import { DEFAULT_DURATION } from '~/config'
+
 export default {
   name: 'MHeader',
   components: { logo },
   data() {
     return {
       logoSrc,
-      isLoggedIn: false,
       isShopifyShow: true,
-      // TODO(rushui 2021-11-23): user should come from vuex
-      user: {
-        name: 'admin',
-      },
     }
   },
   computed: {
     // use the first char of the username as the avatar
+    ...mapState(USER_MODULE_NAME, ['user']),
+    isLoggedIn() {
+      return isDef(this.user) && !isVoid(this.user.id)
+    },
     avatar() {
-      return this.user.name.slice(0, 1)
+      return this.user.username.slice(0, 1)
     },
   },
   methods: {
@@ -116,7 +124,18 @@ export default {
         },
       })
     },
-    handleLogOutBtnClick() {},
+    handleLogOutBtnClick() {
+      this.$store.commit(USER_M_SET_USER, null)
+      this.$store.commit(USER_M_SET_TOKEN, undefined)
+      this.$cookies.remove('user')
+      this.$cookies.remove('token')
+
+      this.$message({
+        message: 'Log out successfully!',
+        type: 'success',
+        duration: DEFAULT_DURATION,
+      })
+    },
   },
 }
 </script>

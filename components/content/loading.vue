@@ -30,16 +30,30 @@
 </template>
 
 <script>
+import { isDef, isUnDef } from '~/shared/utils'
 export default {
   name: 'Loading',
   data() {
     return {
       isLoading: false,
+      timer: undefined,
+    }
+  },
+  beforeDestroy() {
+    if (isDef(this.timer)) {
+      clearTimeout(this.timer)
     }
   },
   methods: {
     start() {
       this.isLoading = true
+      if (isUnDef(this.timer)) {
+        // to avoid loading too long
+        this.timer = setTimeout(() => {
+          this.isLoading = false
+          this.timer = undefined
+        }, 10 * 1000)
+      }
     },
     finish() {
       this.isLoading = false

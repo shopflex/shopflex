@@ -1,12 +1,20 @@
 import type { NuxtAxiosInstance } from '@nuxtjs/axios'
+import { NuxtCookies } from 'cookie-universal-nuxt'
+
 interface MAxios extends NuxtAxiosInstance {
   // eg: fetchUser = (context) => {}
   [key: string]: any | ((context: Context) => void)
 }
-
+export interface Store {
+  // $axios: MAxios
+  // $cookies: NuxtCookies
+  commit: Function
+  dispatch: Function
+  getters: any
+  state: any
+}
 export interface Context {
   app: any
-  store: any
   route: any
   params: any
   query: any
@@ -15,8 +23,9 @@ export interface Context {
   isHMR: boolean
   redirect: Function
   error: any
+  store: Store
   $config: any
-  $cookie: any
+  $cookies: NuxtCookies
   $axios: MAxios
 }
 

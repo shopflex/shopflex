@@ -1,7 +1,9 @@
-import { BASE_URL, DEFAULT_TIMEOUT } from '@/config'
+import { BASE_URL, DEFAULT_TIMEOUT, TOKEN_HEAD } from '@/config'
+import { isVoid } from '~/shared/utils'
+import { USER_MODULE_NAME } from '~/store/user'
 
 /**
- * @param {{$axios: import('@nuxtjs/axios').NuxtAxiosInstance}} param0
+ * @param {import('~/types').Context} param0
  */
 export default function ({ $axios, redirect, route, store, $cookies }) {
   $axios.defaults.baseURL = BASE_URL
@@ -10,11 +12,10 @@ export default function ({ $axios, redirect, route, store, $cookies }) {
   $axios.defaults.transformRequest = (data) => JSON.stringify(data)
 
   $axios.onRequest((config) => {
-    // const method = (config.method || '').toLowerCase()
-    // if (['post'].includes(method)) {
-    //   config.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
-    //   config.transformRequest = (data) => JSON.stringify(data)
-    // }
+    const token = store.state[USER_MODULE_NAME].token
+    if (!isVoid(token)) {
+      config.headers.Authorization = `${TOKEN_HEAD}${token}`
+    }
 
     return config
   })
