@@ -5,6 +5,7 @@
 <script>
 export default {
   name: 'MyProduct',
+  layout: 'public',
 }
 </script>
 

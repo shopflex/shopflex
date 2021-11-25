@@ -43,6 +43,15 @@ export default {
     { src: '@/plugins/api', ssr: true },
     { src: '@/plugins/lazy-load', ssr: false },
   ],
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'index',
+        path: '/',
+        component: resolve(__dirname, 'pages/home/index.vue'),
+      })
+    },
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

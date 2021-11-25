@@ -5,6 +5,7 @@
 <script>
 export default {
   name: 'Setting',
+  layout: 'public',
 }
 </script>
 

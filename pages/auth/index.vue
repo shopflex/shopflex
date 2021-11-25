@@ -67,7 +67,6 @@ import {
   DEFAULT_DURATION,
   DEFAULT_CHANNEL,
   DEFAULT_PLATFORM,
-  NEW_STATUS_LOG_IN,
   NEW_STATUS_SING_IN,
 } from '~/config'
 import { FETCH_AUTH, FETCH_USER_BY_TOKEN } from '~/request/user'
@@ -104,7 +103,7 @@ export default {
       shopName,
       channel,
       bindOld, // true: have an account already, to login.
-      newStatus: bindOld ? NEW_STATUS_LOG_IN : NEW_STATUS_SING_IN,
+      newStatus: bindOld ? undefined : NEW_STATUS_SING_IN,
       platform,
     }
   },
@@ -117,6 +116,7 @@ export default {
       callback(new Error('Please enter the correct email format.'))
     }
     return {
+      listener: null,
       isLogin: true,
       authForm: {
         username: '',
@@ -164,20 +164,27 @@ export default {
         ? 'Log in to your Fashion Express'
         : 'Join Fashion Express free'
     },
-    isLoading() {
-      return this.stat === STAT_LOADING
-    },
     from() {
       return this.$route.query.from || '/'
     },
-  },
-  methods: {
-    handleClick() {
-      const form = this.$refs['authForm']
-      this.isLogin = !this.isLogin
-      form.clearValidate()
-      form.resetFields()
+    isLoading() {
+      return this.stat === STAT_LOADING
     },
+  },
+
+  mounted() {
+    this.listener = window.addEventListener('keydown', (e) => {
+      if (e.key.toUpperCase() !== 'ENTER') {
+        return
+      }
+      this.submitForm('authForm')
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('keydown', this.listener)
+  },
+
+  methods: {
     submitForm(formName) {
       const form = this.$refs[formName]
       form.validate((valid) => {
@@ -192,6 +199,30 @@ export default {
           return false
         }
       })
+    },
+
+    getFormData() {
+      const res = {
+        username: this.authForm.username,
+        password: this.authForm.password,
+        // fixation temporarily
+        channel: DEFAULT_CHANNEL,
+        platform: DEFAULT_PLATFORM,
+        shopName: this.shopName,
+      }
+
+      if (!this.isLogin) {
+        res.newStatus = this.newStatus
+        res.email = this.authForm.email
+      }
+      return res
+    },
+
+    handleClick() {
+      const form = this.$refs['authForm']
+      this.isLogin = !this.isLogin
+      form.clearValidate()
+      form.resetFields()
     },
     // eslint-disable-next-line require-await
     async handleSubmit() {
@@ -243,22 +274,6 @@ export default {
         this.$store.commit(USER_M_SET_TOKEN, token)
         this.$store.commit(USER_M_SET_USER, user)
       }
-    },
-    getFormData() {
-      const res = {
-        username: this.authForm.username,
-        password: this.authForm.password,
-        // fixation temporarily
-        channel: DEFAULT_CHANNEL,
-        platform: DEFAULT_PLATFORM,
-        shopName: this.shopName,
-      }
-
-      if (!this.isLogin) {
-        res.newStatus = this.newStatus
-        res.email = this.authForm.email
-      }
-      return res
     },
   },
 }

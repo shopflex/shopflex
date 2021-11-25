@@ -16,7 +16,6 @@
 
     <section class="mid flex-1 whitespace-nowrap overflow-hidden ml-24 mr-12">
       <h3 class="title text-xl font-semibold">Women Fashion Dropshipping.</h3>
-      <!-- TODO(rushui 2021-11-23): disable enter new line when spacing lack -->
       <p class="description overflow-hidden h-5 text-gray-text">
         Fast & Free Shipping for order above $200. Flat Shipping rate of $9.99
         for all order under $200.

@@ -1,107 +1,58 @@
 {
-  "id": "2637371",
-  "name": "shopify",
+  "id": "2964563",
+  "name": "gumi-max-shop",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
   "description": "",
   "glyphs": [
     {
-      "icon_id": "22937733",
-      "name": "hot_product",
-      "font_class": "hot_product",
-      "unicode": "e603",
-      "unicode_decimal": 58883
-    },
-    {
-      "icon_id": "1881828",
-      "name": "list",
-      "font_class": "list",
+      "icon_id": "2036622",
+      "name": "纸飞机",
+      "font_class": "how",
       "unicode": "e647",
       "unicode_decimal": 58951
     },
     {
-      "icon_id": "5634510",
-      "name": "users",
-      "font_class": "users",
-      "unicode": "f13a",
-      "unicode_decimal": 61754
+      "icon_id": "46393",
+      "name": "order",
+      "font_class": "order",
+      "unicode": "e671",
+      "unicode_decimal": 58993
     },
     {
-      "icon_id": "14835595",
-      "name": "右箭头",
-      "font_class": "arrowRight",
-      "unicode": "e65d",
-      "unicode_decimal": 58973
+      "icon_id": "797300",
+      "name": "分类",
+      "font_class": "products",
+      "unicode": "e628",
+      "unicode_decimal": 58920
     },
     {
-      "icon_id": "16618555",
-      "name": "no_eye",
-      "font_class": "no_eye",
-      "unicode": "e6ad",
-      "unicode_decimal": 59053
-    },
-    {
-      "icon_id": "22064138",
-      "name": "eye",
-      "font_class": "eye",
-      "unicode": "e9ab",
-      "unicode_decimal": 59819
-    },
-    {
-      "icon_id": "1200218",
-      "name": "进行中",
-      "font_class": "jinxingzhong",
-      "unicode": "e627",
-      "unicode_decimal": 58919
-    },
-    {
-      "icon_id": "8875682",
-      "name": "支付失败",
-      "font_class": "zhifushibai",
-      "unicode": "e663",
-      "unicode_decimal": 58979
-    },
-    {
-      "icon_id": "10304434",
-      "name": "success",
-      "font_class": "success",
-      "unicode": "e60c",
-      "unicode_decimal": 58892
-    },
-    {
-      "icon_id": "22652551",
-      "name": "tip",
-      "font_class": "a",
-      "unicode": "e602",
-      "unicode_decimal": 58882
-    },
-    {
-      "icon_id": "592915",
-      "name": "label01",
-      "font_class": "label01",
-      "unicode": "e69a",
-      "unicode_decimal": 59034
-    },
-    {
-      "icon_id": "22532136",
-      "name": "download",
-      "font_class": "download",
-      "unicode": "e601",
-      "unicode_decimal": 58881
-    },
-    {
-      "icon_id": "617221",
-      "name": "产品",
-      "font_class": "myProducts",
-      "unicode": "e63d",
-      "unicode_decimal": 58941
-    },
-    {
-      "icon_id": "5466080",
+      "icon_id": "4471937",
       "name": "setting",
-      "font_class": "setting",
-      "unicode": "e72c",
-      "unicode_decimal": 59180
+      "font_class": "settings",
+      "unicode": "e6ef",
+      "unicode_decimal": 59119
+    },
+    {
+      "icon_id": "7941369",
+      "name": "st_nas_volume_policy",
+      "font_class": "policy",
+      "unicode": "e7ee",
+      "unicode_decimal": 59374
+    },
+    {
+      "icon_id": "7008953",
+      "name": "label",
+      "font_class": "label",
+      "unicode": "e706",
+      "unicode_decimal": 59142
+    },
+    {
+      "icon_id": "7008954",
+      "name": "label_fill",
+      "font_class": "label_fill",
+      "unicode": "e707",
+      "unicode_decimal": 59143
     }
   ]
 }

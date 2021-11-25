@@ -15,7 +15,7 @@ import { mapState } from 'vuex'
 import MHeader from '~/components/content/header/index.vue'
 import MFooter from '~/components/content/m-footer.vue'
 import MMain from '~/components/content/m-main.vue'
-import MAside from '~/components/content/m-aside.vue'
+import MAside from '~/components/content/aside/index.vue'
 import Loading from '~/components/common/loading.vue'
 import { COMMON_MODULE_NAME } from '~/store/common'
 

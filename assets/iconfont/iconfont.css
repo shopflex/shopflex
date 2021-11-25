@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'iconfont'; /* Project id 2637371 */
-  src: url('iconfont.woff2?t=1626433381127') format('woff2'),
-    url('iconfont.woff?t=1626433381127') format('woff'),
-    url('iconfont.ttf?t=1626433381127') format('truetype');
+  font-family: 'iconfont'; /* Project id 2964563 */
+  src: url('iconfont.woff2?t=1637821636324') format('woff2'),
+    url('iconfont.woff?t=1637821636324') format('woff'),
+    url('iconfont.ttf?t=1637821636324') format('truetype');
 }
 
 .iconfont {
@@ -13,58 +13,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-hot_product:before {
-  content: '\e603';
-}
-
-.icon-list:before {
+.icon-how:before {
   content: '\e647';
 }
 
-.icon-users:before {
-  content: '\f13a';
+.icon-order:before {
+  content: '\e671';
 }
 
-.icon-arrowRight:before {
-  content: '\e65d';
+.icon-products:before {
+  content: '\e628';
 }
 
-.icon-no_eye:before {
-  content: '\e6ad';
+.icon-settings:before {
+  content: '\e6ef';
 }
 
-.icon-eye:before {
-  content: '\e9ab';
+.icon-policy:before {
+  content: '\e7ee';
 }
 
-.icon-jinxingzhong:before {
-  content: '\e627';
+.icon-label:before {
+  content: '\e706';
 }
 
-.icon-zhifushibai:before {
-  content: '\e663';
-}
-
-.icon-success:before {
-  content: '\e60c';
-}
-
-.icon-a:before {
-  content: '\e602';
-}
-
-.icon-label01:before {
-  content: '\e69a';
-}
-
-.icon-download:before {
-  content: '\e601';
-}
-
-.icon-myProducts:before {
-  content: '\e63d';
-}
-
-.icon-setting:before {
-  content: '\e72c';
+.icon-label_fill:before {
+  content: '\e707';
 }

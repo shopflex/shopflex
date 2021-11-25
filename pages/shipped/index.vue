@@ -5,6 +5,7 @@
 <script>
 export default {
   name: 'Shipped',
+  layout: 'public',
 }
 </script>
 

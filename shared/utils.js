@@ -7,6 +7,9 @@ export const isEmptyObject = (o) =>
 export const isVoid = (v) => v === null || v === undefined || v === ''
 export const isUnDef = (v) => v === null || v === undefined
 export const isDef = (v) => v !== null && v !== undefined
+export const isNumber = (v) =>
+  typeof v === 'number' || !Number.isNaN(parseInt(v))
+
 export const navigateToOrigin = () =>
   (window.location.href = window.location.origin)
 
@@ -32,3 +35,10 @@ export const pick = (obj, keys) => {
     return prev
   }, {})
 }
+
+/**
+ * Freeze an object.
+ * @param {*} obj
+ * @returns Freezed object.
+ */
+export const freeze = (obj) => (Object.freeze ? Object.freeze(obj) : obj)

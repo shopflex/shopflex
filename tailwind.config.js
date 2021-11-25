@@ -309,7 +309,6 @@ module.exports = {
       light: '300',
       normal: '400',
       medium: '500',
-      mediumplus: '550',
       semibold: '600',
       bold: '700',
       extrabold: '800',
@@ -522,6 +521,7 @@ module.exports = {
       8: '2rem',
       9: '2.25rem',
       10: '2.5rem',
+      11: '2.75rem',
     },
     listStyleType: {
       none: 'none',

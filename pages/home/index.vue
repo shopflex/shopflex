@@ -1,10 +1,11 @@
 <template>
-  <aside class="m-aside">aside</aside>
+  <div class="home">home</div>
 </template>
 
 <script>
 export default {
-  name: 'MAside',
+  name: 'Home',
+  layout: 'public',
 }
 </script>
 

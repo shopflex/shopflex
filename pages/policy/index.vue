@@ -5,6 +5,7 @@
 <script>
 export default {
   name: 'Policy',
+  layout: 'public',
 }
 </script>
 
