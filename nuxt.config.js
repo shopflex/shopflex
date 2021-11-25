@@ -28,8 +28,8 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    '@/assets/iconfont/iconfont.css',
-    '@/assets/style/main.scss',
+    '~/assets/iconfont/iconfont.css',
+    '~/assets/style/main.scss',
   ],
   tailwindcss: {
     viewer: false,
@@ -41,6 +41,7 @@ export default {
     { src: '@/plugins/axios', ssr: true },
     // api should import after plugins/axios
     { src: '@/plugins/api', ssr: true },
+    { src: '@/plugins/lazy-load', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

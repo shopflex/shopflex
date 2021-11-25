@@ -17,7 +17,7 @@
     <section class="mid flex-1 whitespace-nowrap overflow-hidden ml-24 mr-12">
       <h3 class="title text-xl font-semibold">Women Fashion Dropshipping.</h3>
       <!-- TODO(rushui 2021-11-23): disable enter new line when spacing lack -->
-      <p class="description overflow-hidden text-gray-text">
+      <p class="description overflow-hidden h-5 text-gray-text">
         Fast & Free Shipping for order above $200. Flat Shipping rate of $9.99
         for all order under $200.
       </p>
@@ -25,7 +25,7 @@
 
     <div class="right h-full flex items-center flex-shrink-0">
       <div
-        v-if="isLoggedIn"
+        v-if="isLogin"
         class="user h-full flex-1 flex justify-center items-center"
       >
         <div class="user-info h-full flex-1 flex justify-center items-center">
@@ -44,8 +44,8 @@
             "
             >{{ avatar }}</span
           >
-          <span class="profile cursor-pointer mx-2 text-sm font-semibold">{{
-            user.name
+          <span class="profile cursor-pointer mx-4 text-sm font-semibold">{{
+            user.username
           }}</span>
         </div>
         <el-button
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import logo from '~/components/common/logo.vue'
 import logoSrc from '~/assets/icon/fashion-express-logo.png'
 import {
@@ -101,19 +101,19 @@ export default {
     }
   },
   computed: {
-    // use the first char of the username as the avatar
     ...mapState(USER_MODULE_NAME, ['user']),
-    isLoggedIn() {
-      return isDef(this.user) && !isVoid(this.user.id)
-    },
+    ...mapGetters(USER_MODULE_NAME, ['isLogin']),
+    // use the first char of the username as the avatar
     avatar() {
       return this.user.username.slice(0, 1)
     },
   },
   methods: {
-    handleShopifyBtnClick() {},
+    handleShopifyBtnClick() {
+      window.open('https://apps.shopify.com/fashionexpress-dropshipping')
+    },
     handleLogInBtnClick() {
-      if (this.isLoggedIn) {
+      if (this.isLogin) {
         return
       }
       // TODO(rushui 2021-11-23): other logic

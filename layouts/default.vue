@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import MHeader from '@/components/content/header/index.vue'
-import MFooter from '@/components/content/m-footer.vue'
+import MHeader from '~/components/content/header/index.vue'
+import MFooter from '~/components/content/m-footer.vue'
 export default {
   name: 'DefaultLayout',
   components: {
