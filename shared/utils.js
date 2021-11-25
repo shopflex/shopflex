@@ -4,6 +4,8 @@
  */
 export const isEmptyObject = (o) =>
   typeof o !== 'object' || Object.keys(o).length === 0
+export const isPlainObject = (o) =>
+  Object.prototype.toString.call(o) === '[object Object]'
 export const isVoid = (v) => v === null || v === undefined || v === ''
 export const isUnDef = (v) => v === null || v === undefined
 export const isDef = (v) => v !== null && v !== undefined
@@ -42,3 +44,21 @@ export const pick = (obj, keys) => {
  * @returns Freezed object.
  */
 export const freeze = (obj) => (Object.freeze ? Object.freeze(obj) : obj)
+
+/**
+ * @param {*} obj
+ * @example clear({a: 'aaa', b: undefined, c: ''}) => {a: 'aaa'}
+ * @returns {object}
+ */
+export const clear = (obj) => {
+  if (!isPlainObject(obj)) {
+    return {}
+  }
+
+  return Object.keys(obj).reduce((prev, key) => {
+    if (!isVoid(obj[key])) {
+      prev[key] = obj[key]
+    }
+    return prev
+  }, {})
+}

@@ -27,7 +27,7 @@ $ yarn generate
 ### 样式
 
 - Tailwindcss: 标准化的页面格式，支持 tree-shaking。
-- ElementUI: 组件库，支持按需加载。
+- ElementUI: 组件库，支持按需加载。（待废弃）
 
 ### networking
 
@@ -197,6 +197,8 @@ $ yarn generate
 - [ ] : clean code - 优化 store 文件结构
 - [ ] : clean code - 抽离 Aside 组件逻辑
 
+- [ ] : perf - promise cache category list
+
 ## **`打包发布流程`**
 
 -1.本地上传代码到 github；
@@ -209,6 +211,7 @@ $ yarn generate
 
 - [NuxtJS](https://nuxtjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/docs/use)
 - [Element](https://element.eleme.cn/2.0/#/)
 - [Nuxt.js 免费视频教程 开启 SSR 渲染](https://www.bilibili.com/video/BV1Xt41117Kg)
 - [千锋教育\_前端 Nuxt 框架教程 开启 SSR（服务器端渲染）](https://www.bilibili.com/video/BV13Z4y1T74J)

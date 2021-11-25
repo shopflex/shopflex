@@ -4,8 +4,8 @@ export const DEFAULT_PLATFORM = 'sho'
 
 // export const NEW_STATUS_LOG_IN = -1000 // no use.
 export const NEW_STATUS_SING_IN = 1
-
 export const SPECIAL_CATEGORY_ID = 1122
+
 export const categoryList = [
   {
     name: 'Hot',
@@ -98,3 +98,4 @@ export const categoryList = [
     tags: [],
   },
 ]
+export const CATEGORY_PAGE_SIZE = 60

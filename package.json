@@ -13,6 +13,12 @@
     "format": "prettier --write .",
     "test": "jest"
   },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "80"
+    }
+  },
   "lint-staged": {
     "*.{js,vue}": "eslint",
     "*.{md,css,scss,ts}": "yarn format"

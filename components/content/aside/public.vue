@@ -19,25 +19,27 @@
       <ul class="category-list">
         <!-- Use name + id as a key because there is a category with the same id. -->
         <li
-          v-for="item of categoryList"
+          v-for="(item, index) in categoryList"
           :key="item.name + item.id"
-          class="category-item w-full px-2"
+          class="category-item w-full px-2 bg-white"
         >
-          <nuxt-link
-            active-class="active bg-gray-200"
+          <!-- TODO(rushui 2021-11-25): 事件代理 -->
+          <span
+            :class="currentActiveIndex === index ? 'active bg-gray-200' : ''"
             class="
               link
               block
               w-full
               h-11
               pl-12
+              cursor-pointer
               text-sm
               leading-11
               text-gray-500
               font-medium
             "
-            :to="getDestination(item)"
-            >{{ item.name }}</nuxt-link
+            @click="handlePathChange(index)"
+            >{{ item.name }}</span
           >
         </li>
       </ul>
@@ -60,36 +62,54 @@ export default {
   data() {
     return {
       categoryList: freeze(categoryList),
+      currentActiveIndex: 0,
     }
   },
   computed: {
     isCategoryActive() {
-      return this.$route.path.includes('/home')
+      return this.$route.path.includes('/home') || this.$route.path === '/'
     },
   },
   methods: {
     getDestination(item) {
       const res = {
-        name: 'home-id',
-        params: {
+        name: 'home',
+        query: {
           id: item.id,
         },
       }
+
       if (item.id !== SPECIAL_CATEGORY_ID) {
         return res
       }
 
+      // status and newStatus is a flag
       if (item.name === 'Hot') {
-        res.query = {
-          status: 2,
-        }
+        res.query.status = 2
       } else {
-        res.query = {
-          newStatus: 1,
-        }
+        res.query.newStatus = 1
       }
 
       return res
+    },
+    handlePathChange(index) {
+      const id = this.categoryList[index].id
+      const query = {
+        id,
+      }
+      if (id === SPECIAL_CATEGORY_ID) {
+        const name = this.categoryList[index].name
+        if (name === 'Hot') {
+          query.status = 2
+        } else if (name === 'New') {
+          query.status = 1
+        }
+      }
+      this.$router.push({
+        name: 'home',
+        query,
+      })
+      this.currentActiveIndex = index
     },
   },
 }
