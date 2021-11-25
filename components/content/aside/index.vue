@@ -1,6 +1,7 @@
 <template>
   <aside class="m-aside flex flex-col overflow-hidden">
     <aside-private
+      v-if="isLogin"
       class="flex-shrink-0 border-r-1 border-solid border-lightgray"
     />
     <aside-public

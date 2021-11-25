@@ -8,7 +8,7 @@
       bg-gray-100
     "
   >
-    <div class="wrapper bg-white pt-2">
+    <div class="wrapper h-full bg-white pt-2">
       <h3
         class="title flex items-center pl-6 pb-2 font-medium cursor-default"
         :class="isCategoryActive ? 'text-current' : ''"

@@ -33,7 +33,7 @@
       <el-form-item class="w-96 mt-8">
         <el-button
           class="w-full primary-button"
-          style="padding: 0.75rem 0; font-size: 1.25rem; font-weight: 550"
+          style="padding: 0.75rem 0; font-size: 1.25rem; font-weight: 550;"
           @click="submitForm('authForm')"
           >{{ isLogin ? 'Login' : 'Join Fashion Express' }}</el-button
         >
@@ -44,7 +44,7 @@
       Don't have a Fashion Express account?
       <span
         class="link cursor-pointer"
-        style="color: var(--color-link)"
+        style="color: var(--color-link);"
         @click="handleClick"
         >Sign up now</span
       >
@@ -53,7 +53,7 @@
       Already have an account?
       <span
         class="link cursor-pointer"
-        style="color: var(--color-link)"
+        style="color: var(--color-link);"
         @click="handleClick"
         >Log In</span
       >
@@ -181,7 +181,7 @@ export default {
     })
   },
   beforeDestroy() {
-    window.removeEventListener('keydown', this.listener)
+    if (isDef(this.timer)) window.removeEventListener('keydown', this.listener)
   },
 
   methods: {
