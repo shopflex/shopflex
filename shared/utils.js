@@ -7,6 +7,7 @@ export const isEmptyObject = (o) =>
 export const isPlainObject = (o) =>
   Object.prototype.toString.call(o) === '[object Object]'
 export const isVoid = (v) => v === null || v === undefined || v === ''
+export const isNotVoid = (v) => v !== null && v !== undefined && v !== ''
 export const isUnDef = (v) => v === null || v === undefined
 export const isDef = (v) => v !== null && v !== undefined
 export const isNumber = (v) =>

@@ -28,6 +28,7 @@ $ yarn generate
 
 - Tailwindcss: 标准化的页面格式，支持 tree-shaking。
 - ElementUI: 组件库，支持按需加载。（待废弃）
+- daisyui: Tailwindcss。
 
 ### networking
 
@@ -183,6 +184,17 @@ $ yarn generate
 - [ ] : 登录表单提供回滚功能
 - [ ] : 修改 element ui 中的变量，实现自定义主题功能。
 
+### 页面
+
+#### common
+
+- [ ] : header 登录后的头像
+
+- [ ] : aside-public 实现 overflow scroll
+- [ ] : aside-private 图标对齐
+
+#### auth
+
 - [ ] : auth 页面对 form 进行抽离
 - [ ] : auth 页面表单填写时，清楚错误信息
 - [ ] : auth 页面确定 `bindOld` 和 `isLoggedIn` 逻辑。
@@ -190,14 +202,22 @@ $ yarn generate
 - [ ] : auth 页面添加回车提交表单功能。
 - [ ] : auth 页面多设备登录出现错误？
 
-- [ ] : aside-public 实现 overflow scroll
-- [ ] : aside-private 图标对齐
+#### home
+
+- [ ] : product-list 响应式布局
+- [ ] : product-list tooltip bg color
+- [ ] : product-list 事件代理
+
+### 代码简洁
 
 - [ ] : clean code - 将相同类型的代码放置在一起。
 - [ ] : clean code - 优化 store 文件结构
 - [ ] : clean code - 抽离 Aside 组件逻辑
 
+### 性能优化
+
 - [ ] : perf - promise cache category list
+- [ ] : aside 使用事件委托
 
 ## **`打包发布流程`**
 
@@ -212,6 +232,7 @@ $ yarn generate
 - [NuxtJS](https://nuxtjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [daisyUI](https://daisyui.com/docs/use)
+- [Vue-Tailwind](https://www.vue-tailwind.com/)
 - [Element](https://element.eleme.cn/2.0/#/)
 - [Nuxt.js 免费视频教程 开启 SSR 渲染](https://www.bilibili.com/video/BV1Xt41117Kg)
 - [千锋教育\_前端 Nuxt 框架教程 开启 SSR（服务器端渲染）](https://www.bilibili.com/video/BV13Z4y1T74J)

@@ -25,9 +25,13 @@
         >
           <!-- TODO(rushui 2021-11-25): 事件代理 -->
           <span
-            :class="currentActiveIndex === index ? 'active bg-gray-200' : ''"
+            :class="
+              currentActiveIndex === index &&
+              ($route.path === '/' || $route.path.includes('home'))
+                ? 'active bg-gray-200'
+                : ''
+            "
             class="
-              link
               block
               w-full
               h-11

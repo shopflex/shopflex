@@ -1,33 +1,45 @@
 <template>
-  <section class="home px-pd">
+  <section class="home px-pd bg-gray-50">
     <div class="search">
       <!-- {{ $route.params.id }} -->
       search
     </div>
     <div class="tags">tags</div>
-    <div class="product-list">
-      <div v-for="item of list" :key="item.id">
-        id: {{ item.id }}, name: {{ item.name }}
-      </div>
+
+    <div class="product-list grid gap-6 grid-cols-4 flex-wrap">
+      <product-card
+        v-for="(product, index) in list"
+        :key="product.id"
+        :product="product"
+        :index="index"
+        :cate-id="id"
+      >
+      </product-card>
     </div>
+
     <div class="pagination">pagination</div>
   </section>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { clear, isUnDef, isVoid } from '~/shared/utils'
+import { clear, isNotVoid, isUnDef, isVoid } from '~/shared/utils'
 import { FETCH_PRODUCT_LIST } from '~/request/product'
 import { CATEGORY_A_SET_CATEGORY, CATEGORY_MODULE_NAME } from '~/store/category'
 import { SPECIAL_CATEGORY_ID } from '~/config'
+import ProductCard from '~/components/content/product-card.vue'
 
 export default {
   name: 'Home',
+  components: {
+    ProductCard,
+  },
   layout: 'public',
 
   data() {
     return {}
   },
+
   async fetch({ $axios, store, query, params }) {
     const { status, newStatus } = query
     const { id } = params
@@ -58,7 +70,7 @@ export default {
       return isVoid(id) ? SPECIAL_CATEGORY_ID : id
     },
     status() {
-      return !isVoid(this.$route.query.status)
+      return isNotVoid(this.$route.query.status)
         ? this.$route.query.status
         : this.id === SPECIAL_CATEGORY_ID
         ? 2
@@ -84,6 +96,7 @@ export default {
   },
   methods: {
     getProduct() {
+      // eslint-disable-next-line no-unreachable
       this.$store.dispatch(
         CATEGORY_A_SET_CATEGORY,
         this.$axios[FETCH_PRODUCT_LIST](

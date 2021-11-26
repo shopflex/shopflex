@@ -6,7 +6,6 @@
         <nuxt-link
           active-class="active"
           class="
-            link
             flex
             items-center
             w-full
@@ -45,7 +44,6 @@
             <nuxt-link
               active-class="active bg-gray-200"
               class="
-                link
                 block
                 w-full
                 h-11
@@ -61,7 +59,6 @@
             <nuxt-link
               active-class="active bg-gray-200"
               class="
-                link
                 block
                 w-full
                 h-11
@@ -77,7 +74,6 @@
             <nuxt-link
               active-class="active bg-gray-200"
               class="
-                link
                 block
                 w-full
                 h-11
@@ -98,7 +94,6 @@
         <nuxt-link
           active-class="active"
           class="
-            link
             flex
             items-center
             w-full
@@ -117,7 +112,6 @@
         <nuxt-link
           active-class="active"
           class="
-            link
             flex
             items-center
             w-full
@@ -136,7 +130,6 @@
         <nuxt-link
           active-class="active"
           class="
-            link
             flex
             items-center
             w-full

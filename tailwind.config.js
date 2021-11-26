@@ -3,6 +3,27 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   purge: [],
   presets: [],
+  plugins: [require('daisyui'), require('@tailwindcss/forms')],
+  daisyui: {
+    styled: true,
+    // daisyui
+    themes: [
+      {
+        orange: {
+          // custom theme
+          primary: '#ea5234',
+          'primary-focus': '#d43616',
+          'primary-content': '#ffffff',
+          // other colors
+        },
+      },
+      'dark', // and some pre-defined theme
+    ],
+    base: false,
+    utils: false,
+    logs: false,
+    rtl: false,
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
@@ -16,6 +37,7 @@ module.exports = {
       transparent: 'transparent',
       current: '#ff813f',
       canvas: '#fffe6',
+      'theme-primary': '#ff813f',
 
       black: colors.black,
       white: colors.white,
@@ -854,6 +876,12 @@ module.exports = {
     'disabled',
   ],
   variants: {
+    // Vue TailwindVueTailwind
+    extend: {
+      opacity: ['disabled'],
+      cursor: ['disabled'],
+    },
+
     accessibility: ['responsive', 'focus-within', 'focus'],
     alignContent: ['responsive'],
     alignItems: ['responsive'],
@@ -1046,5 +1074,4 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  plugins: [],
 }
