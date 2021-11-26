@@ -1,6 +1,14 @@
 <template>
   <div
-    class="product-card card shadow-sm bg-white cursor-pointer transition-all hover:shadow"
+    class="
+      product-card
+      card
+      shadow-sm
+      bg-white
+      cursor-pointer
+      transition-all
+      hover:shadow
+    "
   >
     <figure class="product-img relative">
       <div class="mask">

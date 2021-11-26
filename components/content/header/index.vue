@@ -1,14 +1,6 @@
 <template>
   <header
-    class="
-      m-header
-      flex
-      justify-between
-      items-center
-      px-pd
-      border-b-2 border-solid border-1 border-lightgray
-      z-fixed
-    "
+    class="m-header flex justify-between items-center px-pd border-b-2 border-solid border-1 border-lightgray z-fixed"
   >
     <div class="left flex-shrink-0">
       <logo :src="logoSrc" class="w-52" />
@@ -30,17 +22,7 @@
         <div class="user-info h-full flex-1 flex justify-center items-center">
           <!-- user the first char of the username as the avatar -->
           <span
-            class="
-              avatar
-              w-8
-              h-8
-              text-center
-              leading-8
-              bg-current
-              text-white
-              rounded-full
-              select-none
-            "
+            class="avatar flex-center w-8 h-8 leading-8 bg-theme-primary text-white rounded-full select-none"
             >{{ avatar }}</span
           >
           <span class="profile cursor-pointer mx-4 text-sm font-semibold">{{
@@ -70,7 +52,7 @@
         v-if="isShopifyShow"
         class="shopify-btn"
         size="medium"
-        style="background: var(--color-primary); color: white"
+        style="background: var(--color-primary); color: white;"
         @click="handleShopifyBtnClick"
         >Start free on shopify</el-button
       >
