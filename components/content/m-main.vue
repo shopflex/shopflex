@@ -1,7 +1,7 @@
 <template>
   <main
     ref="main-ref"
-    class="m-main h-full overflow-x-hidden overflow-y-scroll"
+    class="m-main relative px-pd h-full overflow-x-hidden overflow-y-scroll"
   >
     <Nuxt />
   </main>

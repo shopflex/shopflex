@@ -1,18 +1,10 @@
 <template>
-  <section class="home px-pd -mt-4">
+  <section class="home -mt-4">
     <div class="search">
       <div class="card shadow">
         <div class="card-body">
           <label
-            class="
-              flex
-              pl-4
-              pr-8
-              items-center
-              w-full
-              border-gray-200 border-1 border-solid
-              rounded-full
-            "
+            class="flex pl-4 pr-8 items-center w-full border-gray-200 border-1 border-solid rounded-full"
           >
             <span class="icon mr-2 bg-white iconfont icon-search" />
             <input
