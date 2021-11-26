@@ -79,7 +79,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -217,5 +218,19 @@ input.el-input__inner {
   &:active {
     outline-color: var(--color-primary);
     border-color: var(--color-primary);
+  }
+}
+
+.el-pagination {
+  font-size: 1rem;
+  .number {
+    &:hover,
+    &.active {
+      color: var(--color-primary);
+    }
+  }
+
+  button:hover {
+    color: var(--color-primary) !important;
   }
 }

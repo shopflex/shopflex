@@ -1,48 +1,50 @@
 <template>
-  <section class="home -mt-4">
-    <div class="search">
-      <div class="card shadow">
-        <div class="card-body">
-          <label
-            class="
-              flex
-              pl-4
-              pr-8
-              items-center
-              w-full
-              border-gray-200 border-1 border-solid
-              rounded-full
-            "
-          >
-            <span class="icon mr-2 bg-white iconfont icon-search" />
-            <input
-              v-model.lazy.trim="keyword"
-              type="text"
-              placeholder="Search products"
-              class="flex-1 border-none outline-none bg-white"
-            />
-          </label>
+  <section class="home h-full relative">
+    <template v-if="hasProduct">
+      <div class="search -mt-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <label
+              class="
+                flex
+                pl-4
+                pr-8
+                items-center
+                w-full
+                border-gray-200 border-1 border-solid
+                rounded-full
+              "
+            >
+              <span class="icon mr-2 bg-white iconfont icon-search" />
+              <input
+                v-model.lazy.trim="keyword"
+                type="text"
+                placeholder="Search products"
+                class="flex-1 border-none outline-none bg-white"
+              />
+            </label>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div
-      v-if="tags.length"
-      class="tags flex justify-start gap-2 mt-8"
-      @click="handleTagBtnsClick"
-    >
-      <button
-        v-for="(tag, index) in tags"
-        :key="index"
-        :data-index="index"
-        class="bg-lightgray btn-sm rounded-full py-3 px-5"
-        :class="currentActiveTagIndex === index ? 'bg-primary text-white' : ''"
+      <div
+        v-if="tags.length"
+        class="tags flex justify-start gap-2 mt-8"
+        @click="handleTagBtnsClick"
       >
-        {{ tag }}
-      </button>
-    </div>
+        <button
+          v-for="(tag, index) in tags"
+          :key="index"
+          :data-index="index"
+          class="bg-lightgray btn-sm rounded-full py-3 px-5"
+          :class="
+            currentActiveTagIndex === index ? 'bg-primary text-white' : ''
+          "
+        >
+          {{ tag }}
+        </button>
+      </div>
 
-    <template v-if="list && list.length">
       <div class="product-list mt-8 grid gap-6 grid-cols-4 flex-wrap">
         <product-card
           v-for="(product, index) in list"
@@ -54,21 +56,24 @@
         </product-card>
       </div>
     </template>
+
     <template v-else>
-      <div class="empty-product text-center mt-8">
+      <div class="empty-product flex-center h-full flex-col">
         <span class="icon iconfont icon-empty text-lightgray" />
         <p class="mt-8">We are adding products now. Please wait.</p>
       </div>
     </template>
 
-    <!-- TODO(rushui 2021-11-26): 修改颜色 -->
-    <t-pagination
-      v-model="pageNum"
-      class="pagination my-8"
-      :total-items="total"
-      :per-page="pageSize"
-      :limit="10"
-    />
+    <el-pagination
+      v-if="hasProduct"
+      class="m-8 text-center"
+      :page-size="pageSize"
+      :pager-count="10"
+      layout="prev, pager, next"
+      :total="total"
+      @current-change="handlePageChange"
+    >
+    </el-pagination>
   </section>
 </template>
 
@@ -76,7 +81,6 @@
 import { mapGetters, mapMutations } from 'vuex'
 import { clear, isDef, isNotVoid, isUnDef, isVoid } from '~/shared/utils'
 import { FETCH_PRODUCT_LIST } from '~/request/product'
-import { CATEGORY_MODULE_NAME } from '~/store/category'
 import { SPECIAL_CATEGORY_ID } from '~/config'
 import ProductCard from '~/components/content/product-card.vue'
 import { categoryList, CATEGORY_PAGE_SIZE } from '~/config/app-config'
@@ -163,6 +167,9 @@ export default {
       }
       return isDef(category) ? category.tags : []
     },
+    hasProduct() {
+      return this.total && this.total !== 0
+    },
   },
   watch: {
     // TODO(rushui 2021-11-25): promise cache
@@ -173,9 +180,6 @@ export default {
       if (isVoid(this.status)) {
         return
       }
-      this.getProduct()
-    },
-    pageNum() {
       this.getProduct()
     },
     keyword() {
@@ -240,6 +244,10 @@ export default {
 
       this.currentActiveTagIndex = index
       this.keyword = this.tags[index]
+    },
+    handlePageChange(newPageNum) {
+      this.pageNum = newPageNum
+      this.getProduct()
     },
   },
 }

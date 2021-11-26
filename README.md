@@ -210,6 +210,10 @@ $ yarn generate
 - [ ] : product-list 事件代理
 - [ ] : search 一键删除功能
 
+#### policy
+
+- [ ] : 图片懒加载？
+
 ### 代码简洁
 
 - [ ] : clean code - 将相同类型的代码放置在一起。

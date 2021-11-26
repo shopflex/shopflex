@@ -1,9 +1,11 @@
 import { API_BASE_URL } from './config'
 
+const base = process.env.NODE_ENV !== 'production' ? '' : '/gm-fashion-express/'
+
 export default {
-  target: 'static', 
+  target: 'static',
   router: {
-    base: '/gm-fashion-express/',
+    base,
     extendRoutes(routes, resolve) {
       routes.push({
         name: 'index',
@@ -12,7 +14,7 @@ export default {
       })
     },
   },
-  
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Fashion Express',
@@ -49,7 +51,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '@/plugins/vue-tailwind', ssr: true },
     { src: '@/plugins/element-ui', ssr: true },
     { src: '@/plugins/axios', ssr: true },
     // api should import after plugins/axios

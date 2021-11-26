@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="product-card card shadow-sm bg-white transition-all hover:shadow"
-    :class="isImported ? '' : 'cursor-pointer'"
-  >
+  <card class="product-card" :class="isImported ? '' : 'cursor-pointer'">
     <figure
       class="product-img relative"
       :class="isImported ? 'cursor-not-allowed' : ''"
@@ -44,17 +41,21 @@
         </p>
       </div>
     </section>
-  </div>
+  </card>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import Card from '~/components/common/card.vue'
 import { DEFAULT_DURATION, PRODUCT_DIS_STATUS_ADD } from '~/config'
 import { FETCH_UPDATE_PRODUCT_STATUS } from '~/request/product'
 import { USER_MODULE_NAME } from '~/store/user'
 
 export default {
-  name: 'Card',
+  name: 'ProductCard',
+  components: {
+    Card,
+  },
   props: {
     product: {
       type: Object,
