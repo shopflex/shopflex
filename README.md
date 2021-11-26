@@ -207,12 +207,18 @@ $ yarn generate
 - [ ] : product-list 响应式布局
 - [ ] : product-list tooltip bg color
 - [ ] : product-list 事件代理
+- [ ] : search 一键删除功能
 
 ### 代码简洁
 
 - [ ] : clean code - 将相同类型的代码放置在一起。
 - [ ] : clean code - 优化 store 文件结构
 - [ ] : clean code - 抽离 Aside 组件逻辑
+- [ ] : home - 组件抽离
+
+### style
+
+- [ ] : home - search input 外边框
 
 ### 性能优化
 
@@ -232,8 +238,9 @@ $ yarn generate
 - [NuxtJS](https://nuxtjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [daisyUI](https://daisyui.com/docs/use)
-- [Vue-Tailwind](https://www.vue-tailwind.com/)
+<!-- - [Vue-Tailwind](https://www.vue-tailwind.com/) -->
 - [Element](https://element.eleme.cn/2.0/#/)
+- [vue paginate](https://github.com/lokyoung/vuejs-paginate)
 - [Nuxt.js 免费视频教程 开启 SSR 渲染](https://www.bilibili.com/video/BV1Xt41117Kg)
 - [千锋教育\_前端 Nuxt 框架教程 开启 SSR（服务器端渲染）](https://www.bilibili.com/video/BV13Z4y1T74J)
 - [Vue-Lazyload](https://github.com/hilongjw/vue-lazyload)
