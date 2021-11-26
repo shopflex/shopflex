@@ -1,5 +1,6 @@
 export const API_BASE_URL = 'https://adm.mixshop.world'
-export const BASE_URL = '/api'
+export const BASE_URL =
+  process.env.NODE_ENV !== 'production' ? '/api' : API_BASE_URL
 export const ERR_CODE_OK = 200
 export const ERR_CODE_CREATED = 201
 export const ERR_CODE_UNAUTHORIZED = 401
