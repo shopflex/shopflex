@@ -31,6 +31,7 @@
 
 <script>
 import { isDef, isUnDef } from '~/shared/utils'
+
 export default {
   name: 'Loading',
   data() {
@@ -42,6 +43,7 @@ export default {
   beforeDestroy() {
     if (isDef(this.timer)) {
       clearTimeout(this.timer)
+      this.timer = undefined
     }
   },
   methods: {

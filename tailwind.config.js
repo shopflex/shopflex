@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   purge: [],
   presets: [],
-  plugins: [require('daisyui'), require('@tailwindcss/forms')],
+  plugins: [require('daisyui')],
   daisyui: {
     styled: true,
     // daisyui
@@ -35,7 +35,6 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
-      current: '#ff813f',
       canvas: '#fffe6',
       'theme-primary': '#ff813f',
 

@@ -1,10 +1,7 @@
 <template>
-  <card class="product-card" :class="isImported ? '' : 'cursor-pointer'">
-    <figure
-      class="product-img relative"
-      :class="isImported ? 'cursor-not-allowed' : ''"
-    >
-      <div class="mask">
+  <card class="product-card">
+    <figure class="product-img relative">
+      <div class="mask" :class="{ 'cursor-not-allowed': isImported }">
         <div class="wrapper w-full h-full flex-center">
           <button
             class="btn relative btn-sm btn-primary"
@@ -26,7 +23,8 @@
         <img class="w-full h-96" :src="product.pic" />
       </template>
     </figure>
-    <section class="card-body p-4" @click="handleToDetail">
+
+    <section class="card-body p-4 cursor-pointer" @click="handleToDetail">
       <div :data-tip="product.name" class="tooltip tooltip-primary z-offcanvas">
         <h3 class="card-title ellipsis">{{ product.name }}</h3>
       </div>
@@ -48,6 +46,7 @@
 import { mapGetters } from 'vuex'
 import Card from '~/components/common/card.vue'
 import { DEFAULT_DURATION, PRODUCT_DIS_STATUS_ADD } from '~/config'
+import { DEFAULT_SET_LOADING_BY_PROMISE, useLoading } from '~/mixins'
 import { FETCH_UPDATE_PRODUCT_STATUS } from '~/request/product'
 import { USER_MODULE_NAME } from '~/store/user'
 
@@ -56,6 +55,7 @@ export default {
   components: {
     Card,
   },
+  mixins: [useLoading()],
   props: {
     product: {
       type: Object,
@@ -77,7 +77,6 @@ export default {
   data() {
     return {
       isImported: false,
-      isLoading: false,
     }
   },
   computed: {
@@ -101,11 +100,12 @@ export default {
         return
       }
 
-      this.isLoading = true
-      this.$axios[FETCH_UPDATE_PRODUCT_STATUS]({
+      const res = this.$axios[FETCH_UPDATE_PRODUCT_STATUS]({
         disStatus: PRODUCT_DIS_STATUS_ADD,
         ids: this.product.id,
       })
+
+      this[DEFAULT_SET_LOADING_BY_PROMISE](res)
         .then(() => {
           this.isImported = true
           this.$message({
@@ -126,9 +126,6 @@ export default {
             console.error(e)
           }
         })
-        .finally(() => {
-          this.isLoading = false
-        })
     },
     handleToDetail() {
       this.$router.push({
@@ -148,5 +145,9 @@ export default {
 <style lang="scss" scoped>
 .product-img:hover .mask {
   display: block;
+}
+
+button.cursor-not-allow {
+  cursor: not-allowed !important;
 }
 </style>

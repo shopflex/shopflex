@@ -68,7 +68,7 @@
       v-if="hasProduct"
       class="m-8 text-center"
       :page-size="pageSize"
-      :pager-count="10"
+      :page-count="10"
       layout="prev, pager, next"
       :total="total"
       @current-change="handlePageChange"
@@ -78,18 +78,13 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { clear, isDef, isNotVoid, isUnDef, isVoid } from '~/shared/utils'
 import { FETCH_PRODUCT_LIST } from '~/request/product'
 import { SPECIAL_CATEGORY_ID } from '~/config'
 import ProductCard from '~/components/content/product-card.vue'
 import { categoryList, CATEGORY_PAGE_SIZE } from '~/config/app-config'
-import {
-  COMMON_MODULE_NAME,
-  M_SET_STAT_ERROR,
-  M_SET_STAT_LOADING,
-  M_SET_STAT_SUCCESS,
-} from '~/store/common'
+import { A_SET_STAT, COMMON_MODULE_NAME } from '~/store/common'
 import { EventBus, MAIN_EL_SCROLL } from '~/shared'
 
 export default {
@@ -168,7 +163,7 @@ export default {
       return isDef(category) ? category.tags : []
     },
     hasProduct() {
-      return this.total && this.total !== 0
+      return isDef(this.list) && this.list.length !== 0
     },
   },
   watch: {
@@ -187,20 +182,14 @@ export default {
     },
   },
   mounted() {
-    if (isUnDef(this.list) || this.list.length === 0) {
+    if (!this.hasProduct) {
       this.getProduct()
     }
   },
   methods: {
-    ...mapMutations(COMMON_MODULE_NAME, [
-      M_SET_STAT_LOADING,
-      M_SET_STAT_SUCCESS,
-      M_SET_STAT_ERROR,
-    ]),
+    ...mapActions(COMMON_MODULE_NAME, [A_SET_STAT]),
     getProduct() {
-      this[M_SET_STAT_LOADING]()
-
-      this.$axios[FETCH_PRODUCT_LIST](
+      const res = this.$axios[FETCH_PRODUCT_LIST](
         clear({
           pageNum: this.pageNum,
           pageSize: this.pageSize,
@@ -210,16 +199,16 @@ export default {
           keyword: this.keyword,
         })
       )
+
+      this[A_SET_STAT](res)
         .then((data) => {
           const { total, list } = data
           this.total = total
           this.list = list
           EventBus.$emit(MAIN_EL_SCROLL, { x: 0, y: 0 })
-
-          this[M_SET_STAT_SUCCESS]()
         })
         .catch((e) => {
-          this[M_SET_STAT_ERROR]()
+          this.$message('Request was aborted! It may be a network traffic jam!')
           if (process.env.NODE_ENV !== 'production')
             // eslint-disable-next-line no-console
             console.error('Get product: ', e)

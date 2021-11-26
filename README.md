@@ -230,6 +230,12 @@ $ yarn generate
 - [ ] : perf - promise cache category list
 - [ ] : aside 使用事件委托
 
+### UE
+
+- [ ] : vue-lazy-image - error image
+- [ ] : vue-lazy-image - 设置更大的边界检测
+- [ ] : home - 记录跳转时的位置，方便回滚
+
 ## **`打包发布流程`**
 
 -1.本地上传代码到 github；
