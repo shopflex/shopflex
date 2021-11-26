@@ -1,6 +1,18 @@
 import { API_BASE_URL } from './config'
 
 export default {
+  target: 'static', 
+  router: {
+    base: '/gm-fashion-express/',
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'index',
+        path: '/',
+        component: resolve(__dirname, 'pages/home/index.vue'),
+      })
+    },
+  },
+  
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Fashion Express',
@@ -44,15 +56,6 @@ export default {
     { src: '@/plugins/api', ssr: true },
     { src: '@/plugins/lazy-load', ssr: false },
   ],
-  router: {
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'index',
-        path: '/',
-        component: resolve(__dirname, 'pages/home/index.vue'),
-      })
-    },
-  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
