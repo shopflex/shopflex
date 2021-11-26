@@ -1,6 +1,14 @@
 <template>
   <footer
-    class="m-footer flex items-center justify-end px-pd border-t-1 border-solid border-lightgray z-fixed"
+    class="
+      m-footer
+      flex
+      items-center
+      justify-end
+      px-pd
+      border-t-1 border-solid border-lightgray
+      z-fixed
+    "
   >
     <span class="">Contact us anytime:&nbsp;</span>
     <span class="contact font-bold">

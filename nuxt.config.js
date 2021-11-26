@@ -3,7 +3,7 @@ import { API_BASE_URL } from './config'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Max Shop',
+    title: 'Fashion Express',
     htmlAttrs: {
       lang: 'en',
     },

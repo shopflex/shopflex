@@ -27,8 +27,8 @@ $ yarn generate
 ### 样式
 
 - Tailwindcss: 标准化的页面格式，支持 tree-shaking。
-- ElementUI: 组件库，支持按需加载。（待废弃）
-- daisyui: Tailwindcss。
+- ElementUI: 组件库，支持按需加载。
+<!-- - daisyui: Tailwindcss。 -->
 
 ### networking
 
