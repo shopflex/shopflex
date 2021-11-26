@@ -1,5 +1,10 @@
-import { BASE_URL, DEFAULT_TIMEOUT, TOKEN_HEAD } from '~/config'
-import { isVoid } from '~/shared/utils'
+import {
+  BASE_URL,
+  DEFAULT_TIMEOUT,
+  TOKEN_HEAD,
+  ERR_CODE_UNAUTHORIZED,
+} from '~/config'
+import { isVoid, isAuthPath } from '~/shared/utils'
 import { USER_MODULE_NAME } from '~/store/user'
 
 /**
@@ -22,10 +27,13 @@ export default function ({ $axios, redirect, route, store }) {
   })
 
   $axios.onResponse((res) => {
-    // const status = res.status
-    // if (status === 401 || res.data.code === ERR_CODE_UNAUTHORIZED) {
-    //   redirect('/auth')
-    // }
+    const status = res.status
+    if (
+      (status === 401 || res.data.code === ERR_CODE_UNAUTHORIZED) &&
+      !isAuthPath(route.path)
+    ) {
+      redirect('/auth')
+    }
     return res.data
   })
 

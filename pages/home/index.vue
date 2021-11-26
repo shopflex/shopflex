@@ -4,7 +4,15 @@
       <div class="card shadow">
         <div class="card-body">
           <label
-            class="flex pl-4 pr-8 items-center w-full border-gray-200 border-1 border-solid rounded-full"
+            class="
+              flex
+              pl-4
+              pr-8
+              items-center
+              w-full
+              border-gray-200 border-1 border-solid
+              rounded-full
+            "
           >
             <span class="icon mr-2 bg-white iconfont icon-search" />
             <input
@@ -93,7 +101,8 @@ export default {
   async asyncData({ $axios, store, query, params }) {
     const { status, newStatus } = query
     const { id } = params
-    const { pageNum, pageSize } = store.state[CATEGORY_MODULE_NAME]
+    const pageNum = 1
+    const pageSize = CATEGORY_PAGE_SIZE
     let total = 0
     let list = []
     try {
@@ -116,6 +125,8 @@ export default {
     return {
       total,
       list,
+      pageNum,
+      pageSize,
     }
   },
 

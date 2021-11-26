@@ -1,5 +1,7 @@
 <template>
-  <section class="setting">setting</section>
+  <section class="setting">
+    <t-alert variant="error" show> Something goes wrong </t-alert>
+  </section>
 </template>
 
 <script>

@@ -1,3 +1,4 @@
+import { stringify } from 'qs'
 import { ERR_CODE_OK } from '~/config'
 
 const transformParams = (params) => {
@@ -10,9 +11,9 @@ const transformParams = (params) => {
   return res
 }
 
-const MODULE_NAME = 'PRODUCT'
-
+export const MODULE_NAME = 'PRODUCT'
 export const FETCH_PRODUCT_LIST = `${MODULE_NAME}-FETCH-PRODUCT-LIST`
+export const FETCH_UPDATE_PRODUCT_STATUS = `${MODULE_NAME}-FETCH-UPDATE-PRODUCT-STATUS`
 
 /**
  * @param { import ('~/types').Context } context
@@ -35,11 +36,33 @@ export const fetchProductList = ({ $axios }, params) => {
 }
 
 /**
+ * @param {{disStatus: 0 | 1, ids: number | number[]}} data
+ * @returns
+ */
+export const fetchUpdateProductStatus = ({ $axios }, data) => {
+  const query = stringify(data)
+  return $axios
+    .post(
+      `/distributor/product/update/disStatus${query ? '?' + query : ''}`,
+      null
+    )
+    .then((res) => {
+      const { code, message, data } = res
+      if (code !== ERR_CODE_OK) throw new Error(message)
+      return data
+    })
+}
+
+/**
  * @type {import("~/types").ApiModule}
  */
 export default [
   {
     key: FETCH_PRODUCT_LIST,
     fetcher: fetchProductList,
+  },
+  {
+    key: FETCH_UPDATE_PRODUCT_STATUS,
+    fetcher: fetchUpdateProductStatus,
   },
 ]

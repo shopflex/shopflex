@@ -19,6 +19,8 @@ export const navigateToOrigin = () =>
 const emailRE =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 export const isEmail = (val) => emailRE.test(val)
+const authRE = /(login|auth|register|)/
+export const isAuthPath = (path) => authRE.test(path)
 
 export const formatMessage = (message = '') => {
   if (!message) return message

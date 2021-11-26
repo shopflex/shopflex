@@ -1,20 +1,23 @@
 <template>
   <div
-    class="
-      product-card
-      card
-      shadow-sm
-      bg-white
-      cursor-pointer
-      transition-all
-      hover:shadow
-    "
+    class="product-card card shadow-sm bg-white transition-all hover:shadow"
+    :class="isImported ? '' : 'cursor-pointer'"
   >
-    <figure class="product-img relative">
+    <figure
+      class="product-img relative"
+      :class="isImported ? 'cursor-not-allowed' : ''"
+    >
       <div class="mask">
         <div class="wrapper w-full h-full flex-center">
-          <button class="btn btn-sm btn-primary" @click="handleAddBtnClick">
-            Add to My Products
+          <button
+            class="btn relative btn-sm btn-primary"
+            :class="{
+              'btn-disabled': isImported,
+              loading: isLoading,
+            }"
+            @click="handleAddBtnClick"
+          >
+            {{ btnContent }}
           </button>
         </div>
       </div>
@@ -46,6 +49,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { DEFAULT_DURATION, PRODUCT_DIS_STATUS_ADD } from '~/config'
+import { FETCH_UPDATE_PRODUCT_STATUS } from '~/request/product'
 import { USER_MODULE_NAME } from '~/store/user'
 
 export default {
@@ -68,11 +73,23 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isImported: false,
+      isLoading: false,
+    }
+  },
   computed: {
     ...mapGetters(USER_MODULE_NAME, ['isLogin']),
+    btnContent() {
+      return this.isImported ? 'Successfully Added' : 'Add to My Products'
+    },
   },
   methods: {
     handleAddBtnClick() {
+      if (this.isImported) {
+        return
+      }
       if (!this.isLogin) {
         this.$router.push({
           name: 'auth',
@@ -82,8 +99,35 @@ export default {
         })
         return
       }
-      // TODO(rushui 2021-11-26): logic
-      console.log('handleAddBtnClick', this.product)
+
+      this.isLoading = true
+      this.$axios[FETCH_UPDATE_PRODUCT_STATUS]({
+        disStatus: PRODUCT_DIS_STATUS_ADD,
+        ids: this.product.id,
+      })
+        .then(() => {
+          this.isImported = true
+          this.$message({
+            type: 'success',
+            duration: DEFAULT_DURATION,
+            message: 'Successfully!',
+          })
+        })
+        .catch((e) => {
+          this.isImported = false
+          this.$message({
+            type: 'error',
+            duration: DEFAULT_DURATION,
+            message: 'Fail!',
+          })
+          if (process.env.NODE_ENV !== 'production') {
+            // eslint-disable-next-line no-console
+            console.error(e)
+          }
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
     handleToDetail() {
       this.$router.push({

@@ -42,6 +42,9 @@ const settings = {
     component: TPagination,
     props: {},
   },
+  't-alert': {
+    component: TAlert,
+  },
 }
 
 Vue.use(VueTailwind, settings)
