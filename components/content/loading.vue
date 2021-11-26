@@ -21,7 +21,7 @@
       class="
         w-8
         h-8
-        border-4 border-current border-dashed
+        border-4 border-theme-primary border-dashed
         rounded-full
         animate-spin
       "

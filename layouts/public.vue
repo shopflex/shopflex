@@ -1,6 +1,6 @@
 <template>
   <div class="app flex flex-col">
-    <loading :is-loading="isLoading" />
+    <loading />
     <m-header class="h-16 flex-shrink-0" />
     <section class="flex-1 flex overflow-hidden">
       <m-aside class="w-64" />

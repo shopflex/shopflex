@@ -1,5 +1,5 @@
 <template>
-  <section class="home px-pd bg-gray-50">
+  <section class="home px-pd">
     <div class="search">
       <!-- {{ $route.params.id }} -->
       search
@@ -17,17 +17,29 @@
       </product-card>
     </div>
 
-    <div class="pagination">pagination</div>
+    <t-pagination
+      v-model="currentPage"
+      class="mt-4"
+      :total-items="total"
+      :per-page="pageSize"
+      :limit="10"
+    />
   </section>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 import { clear, isNotVoid, isUnDef, isVoid } from '~/shared/utils'
 import { FETCH_PRODUCT_LIST } from '~/request/product'
 import { CATEGORY_A_SET_CATEGORY, CATEGORY_MODULE_NAME } from '~/store/category'
 import { SPECIAL_CATEGORY_ID } from '~/config'
 import ProductCard from '~/components/content/product-card.vue'
+import {
+  COMMON_MODULE_NAME,
+  M_SET_STAT_ERROR,
+  M_SET_STAT_LOADING,
+  M_SET_STAT_SUCCESS,
+} from '~/store/common'
 
 export default {
   name: 'Home',
@@ -35,9 +47,15 @@ export default {
     ProductCard,
   },
   layout: 'public',
+  validate() {
+    // TODO(rushui 2021-11-26): 检验参数
+    return true
+  },
 
   data() {
-    return {}
+    return {
+      currentPage: 1,
+    }
   },
 
   async fetch({ $axios, store, query, params }) {
@@ -65,9 +83,10 @@ export default {
   },
   computed: {
     ...mapState(CATEGORY_MODULE_NAME, ['list', 'pageNum', 'pageSize', 'total']),
+    ...mapGetters(COMMON_MODULE_NAME, ['isLoading']),
     id() {
       const id = this.$route.query.id
-      return isVoid(id) ? SPECIAL_CATEGORY_ID : id
+      return isVoid(id) ? SPECIAL_CATEGORY_ID : Number(id)
     },
     status() {
       return isNotVoid(this.$route.query.status)
@@ -88,6 +107,10 @@ export default {
       }
       this.getProduct()
     },
+    pageNum(newPageNum) {
+      // TODO(rushui 2021-11-26): change page
+      console.log('home: ', newPageNum)
+    },
   },
   mounted() {
     if (isUnDef(this.list) || this.list.length === 0) {
@@ -95,20 +118,33 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(COMMON_MODULE_NAME, [
+      M_SET_STAT_LOADING,
+      M_SET_STAT_SUCCESS,
+      M_SET_STAT_ERROR,
+    ]),
     getProduct() {
-      // eslint-disable-next-line no-unreachable
-      this.$store.dispatch(
-        CATEGORY_A_SET_CATEGORY,
-        this.$axios[FETCH_PRODUCT_LIST](
-          clear({
-            pageNum: this.pageNum,
-            pageSize: this.pageSize,
-            productCategoryId: this.id,
-            status: this.status,
-            newStatus: this.newStatus,
-          })
-        )
+      this[M_SET_STAT_LOADING]()
+
+      this.$axios[FETCH_PRODUCT_LIST](
+        clear({
+          pageNum: this.pageNum,
+          pageSize: this.pageSize,
+          productCategoryId: this.id,
+          status: this.status,
+          newStatus: this.newStatus,
+        })
       )
+        .then((data) => {
+          this.$store.dispatch(CATEGORY_A_SET_CATEGORY, data)
+          this[M_SET_STAT_SUCCESS]()
+        })
+        .catch((e) => {
+          this[M_SET_STAT_ERROR]()
+          if (process.env.NODE_ENV !== 'production')
+            // eslint-disable-next-line no-console
+            console.error('Get product: ', e)
+        })
     },
   },
 }
