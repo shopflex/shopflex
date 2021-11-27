@@ -146,8 +146,4 @@ export default {
 .product-img:hover .mask {
   display: block;
 }
-
-button.cursor-not-allow {
-  cursor: not-allowed !important;
-}
 </style>

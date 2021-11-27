@@ -193,6 +193,7 @@ $ yarn generate
 
 - [ ] : aside-public 实现 overflow scroll
 - [ ] : aside-private 图标对齐
+- [ ] : aside - hover 修改背景
 
 #### auth
 
@@ -202,6 +203,7 @@ $ yarn generate
 - [ ] : auth 页面添加关闭、后退功能。
 - [ ] : auth 页面添加回车提交表单功能。
 - [ ] : auth 页面多设备登录出现错误？
+- [ ] : auth 回车登录与按钮登录导致两次登录问题
 
 #### home
 
@@ -229,6 +231,7 @@ $ yarn generate
 
 - [ ] : perf - promise cache category list
 - [ ] : aside 使用事件委托
+- [ ] : axios fetch 改用 symbol 实现
 
 ### UE
 

@@ -1,4 +1,4 @@
-declare interface useLoadingOptions {
+export interface useLoadingOptions {
   timeout?: number
   isIdle?: string
   isSuccess?: string
@@ -7,4 +7,4 @@ declare interface useLoadingOptions {
   setByPromise?: string
   setLoading?: string
 }
-declare function useLoading(options: useLoadingOptions): Vue.ComponentOptions
+export function useLoading(options: useLoadingOptions): Vue.ComponentOptions

@@ -79,7 +79,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import { clear, isDef, isNotVoid, isUnDef, isVoid } from '~/shared/utils'
+import { clear, isDef, isNotVoid, isVoid } from '~/shared/utils'
 import { FETCH_PRODUCT_LIST } from '~/request/product'
 import { SPECIAL_CATEGORY_ID } from '~/config'
 import ProductCard from '~/components/content/product-card.vue'

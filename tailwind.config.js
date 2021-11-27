@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const { THEME_PRIMARY, THEME_SECONDARY } = require('./static/theme.cjs')
 
 module.exports = {
   purge: [],
@@ -11,13 +12,13 @@ module.exports = {
       {
         orange: {
           // custom theme
-          primary: '#ea5234',
-          'primary-focus': '#d43616',
+          primary: THEME_PRIMARY,
+          'primary-focus': THEME_SECONDARY,
           'primary-content': '#ffffff',
           // other colors
         },
       },
-      'dark', // and some pre-defined theme
+      // 'dark', // and some pre-defined theme
     ],
     base: false,
     utils: false,
@@ -36,7 +37,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       canvas: '#fffe6',
-      'theme-primary': '#ff813f',
+      'theme-primary': '#fc7234',
 
       black: colors.black,
       white: colors.white,

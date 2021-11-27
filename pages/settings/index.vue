@@ -1,5 +1,5 @@
 <template>
-  <section class="setting flex flex-col">
+  <section data-theme="orange" class="setting flex flex-col">
     <button class="btn btn-primary" @click="handleClick1">click me1</button>
     <button class="btn btn-primary" @click="handleClick2">click me2</button>
     <button class="btn btn-primary" @click="handleClick3">click me3</button>

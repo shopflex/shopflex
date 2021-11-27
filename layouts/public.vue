@@ -1,5 +1,6 @@
 <template>
-  <div class="app flex flex-col">
+  <!-- TODO(rushui 2021-11-27): to change theme more elegant -->
+  <div class="app flex flex-col" data-theme="orange">
     <global-loading />
     <m-header class="h-16 flex-shrink-0" />
     <section class="flex-1 flex overflow-hidden">
