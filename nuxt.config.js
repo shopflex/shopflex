@@ -1,6 +1,6 @@
 import { API_BASE_URL } from './config'
 
-const base = process.env.NODE_ENV !== 'production' ? '' : '/gm-fashion-express/'
+const base = process.env.NODE_ENV !== 'production' ? '' : '/shopflex/'
 
 export default {
   target: 'static',
