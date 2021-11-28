@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/shipped", {data:[{}],fetch:{},mutations:[]});

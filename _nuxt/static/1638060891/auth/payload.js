@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/auth", (function(a){return {data:[{shopName:"",channel:a,bindOld:false,newStatus:1,platform:a}],fetch:{},mutations:[]}}(void 0)));

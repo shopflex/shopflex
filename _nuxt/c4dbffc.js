@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{480:function(n,e,t){"use strict";t.r(e);var c={name:"PayPending",layout:"public"},l=t(7),component=Object(l.a)(c,(function(){var n=this,e=n.$createElement;return(n._self._c||e)("section",{staticClass:"pay-pending"},[n._v("pay-pending")])}),[],!1,null,"167a54bc",null);e.default=component.exports}}]);
